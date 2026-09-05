@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  color: #243447;
+  background: #f4f7fb;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+h1 {
+  margin-bottom: 8px;
+  color: #16324f;
+  font-size: 2.8rem;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  margin-top: 40px;
+  color: #245b7a;
+  font-size: 1.6rem;
+  border-bottom: 2px solid #b9d6e8;
+  padding-bottom: 8px;
+}
+
+img {
+  display: block;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border: 5px solid white;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgb(22 50 79 / 18%);
+}
+
+p {
+  max-width: 650px;
+  margin: 24px 0;
+  color: #405466;
+  font-size: 1.1rem;
+}
+
+ul {
+  padding-left: 24px;
+  color: #405466;
+  font-size: 1.05rem;
+}
+
+li {
+  margin: 10px 0;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 6px;
+  color: white;
+  background-color: #245b7a;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #16324f;
+  transform: translateY(-2px);
+}
+
+button:focus-visible {
+  outline: 3px solid #f2b134;
+  outline-offset: 3px;
+}
+
+#fullscreen-gif {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #111;
+  background-image: url("lanky.gif");
+  background-repeat: repeat;
+  background-size: 180px auto;
+  background-position: top left;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+#fullscreen-gif.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 32px 18px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
