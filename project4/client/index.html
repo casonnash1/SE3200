@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Explorer</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero" id="hero">
+        <div class="hero-text">
+            <h1>Solar System Explorer</h1>
+            <p>The Sun, planets, moons, comets and asteroids in one catalog.</p>
+            <button id="new" class="primary">New Object</button>
+        </div>
+    </header>
+
+    <main>
+    <form id="new_object">
+        <h2>New Object</h2>
+        <p class="form-note">Fields marked with * are required.</p>
+        <label for="new_name" class="required">Name</label><br>
+        <input type="text" id="new_name" name="name" required><br><br>
+        <fieldset>
+            <legend class="required">Type</legend>
+
+            <input type="radio" id="new_type_star" name="type" value="star" required>
+            <label for="new_type_star">Star</label><br>
+
+            <input type="radio" id="new_type_planet" name="type" value="planet">
+            <label for="new_type_planet">Planet</label><br>
+
+            <input type="radio" id="new_type_dwarf_planet" name="type" value="dwarf planet">
+            <label for="new_type_dwarf_planet">Dwarf Planet</label><br>
+
+            <input type="radio" id="new_type_moon" name="type" value="moon">
+            <label for="new_type_moon">Moon</label><br>
+
+            <input type="radio" id="new_type_comet" name="type" value="comet">
+            <label for="new_type_comet">Comet</label><br>
+
+            <input type="radio" id="new_type_asteroid" name="type" value="asteroid">
+            <label for="new_type_asteroid">Asteroid</label><br>
+        </fieldset><br>
+        <label for="new_parent_body">What does it orbit?</label><br>
+        <input type="text" id="new_parent_body" name="parent_body"><br><br>
+
+        <label for="new_diameter_km" class="required">Diameter (km)</label><br>
+        <input type="number" id="new_diameter_km" name="diameter_km" step="any" min="0" required><br><br>
+
+        <label for="new_mass_kg">Mass (kg)</label><br>
+        <input type="number" id="new_mass_kg" name="mass_kg" step="any"><br><br>
+
+        <label for="new_orbital_period_days">Orbital Period (days)</label><br>
+        <input type="number" id="new_orbital_period_days" name="orbital_period_days" step="any"><br><br>
+
+        <label for="new_avg_temp_c">Average Temperature (&deg;C)</label><br>
+        <input type="number" id="new_avg_temp_c" name="avg_temp_c" step="any"><br><br>
+
+        <label for="new_img_url">Image URL</label><br>
+        <input type="url" id="new_img_url" name="img_url">
+        <button type="button" id="new_check_nasa">Check NASA</button><br><br>
+
+        <label for="new_description">Description</label><br>
+        <textarea id="new_description" name="description" rows="4" cols="40"></textarea><br><br>
+
+        <button type="submit" class="primary">Create Object</button>
+    </form>
+
+    <!-- The update form waits here, then moves under a row when Edit is clicked. -->
+    <div id="update_home">
+    <form id="update_object">
+        <input type="hidden" id="existing_name" name="existing_name">
+        <p class="form-note">Fields marked with * are required.</p>
+        <label for="update_name" class="required">Name</label><br>
+        <input type="text" id="update_name" name="name" required><br><br>
+        <fieldset>
+            <legend class="required">Type</legend>
+
+            <input type="radio" id="update_type_star" name="type" value="star" required>
+            <label for="update_type_star">Star</label><br>
+
+            <input type="radio" id="update_type_planet" name="type" value="planet">
+            <label for="update_type_planet">Planet</label><br>
+
+            <input type="radio" id="update_type_dwarf_planet" name="type" value="dwarf planet">
+            <label for="update_type_dwarf_planet">Dwarf Planet</label><br>
+
+            <input type="radio" id="update_type_moon" name="type" value="moon">
+            <label for="update_type_moon">Moon</label><br>
+
+            <input type="radio" id="update_type_comet" name="type" value="comet">
+            <label for="update_type_comet">Comet</label><br>
+
+            <input type="radio" id="update_type_asteroid" name="type" value="asteroid">
+            <label for="update_type_asteroid">Asteroid</label><br>
+        </fieldset><br>
+        <label for="update_parent_body">What does it orbit?</label><br>
+        <input type="text" id="update_parent_body" name="parent_body"><br><br>
+
+        <label for="update_diameter_km" class="required">Diameter (km)</label><br>
+        <input type="number" id="update_diameter_km" name="diameter_km" step="any" min="0" required><br><br>
+
+        <label for="update_mass_kg">Mass (kg)</label><br>
+        <input type="number" id="update_mass_kg" name="mass_kg" step="any"><br><br>
+
+        <label for="update_orbital_period_days">Orbital Period (days)</label><br>
+        <input type="number" id="update_orbital_period_days" name="orbital_period_days" step="any"><br><br>
+
+        <label for="update_avg_temp_c">Average Temperature (&deg;C)</label><br>
+        <input type="number" id="update_avg_temp_c" name="avg_temp_c" step="any"><br><br>
+
+        <label for="update_img_url">Image URL</label><br>
+        <input type="url" id="update_img_url" name="img_url">
+        <button type="button" id="update_check_nasa">Check NASA</button><br><br>
+
+        <label for="update_description">Description</label><br>
+        <textarea id="update_description" name="description" rows="4" cols="40"></textarea><br><br>
+
+        <button type="submit" class="primary">Update Object</button>
+        <button type="button" id="update_cancel">Cancel</button>
+    </form>
+    </div>
+
+    <p id="message"></p>
+
+    <h2>All Objects</h2>
+    <div id="body_list"></div>
+    </main>
+
+</body>
+</html>

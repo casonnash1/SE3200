@@ -1,0 +1,394 @@
+/* ---------- Theme ---------- */
+
+:root {
+    --bg: #04050d;
+    --panel: rgba(14, 18, 42, 0.82);
+    --panel-solid: #0e122a;
+    --line: rgba(140, 160, 255, 0.22);
+    --text: #e8ecff;
+    --muted: #9aa3c7;
+    --gold: #ffb347;
+    --cyan: #6fd3ff;
+    --danger: #ff6b6b;
+    --accent: var(--cyan);   /* each type card overrides this */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    background-color: var(--bg);
+    /* Four star layers, then two soft nebula glows. */
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #ffffff, transparent),
+        radial-gradient(1px 1px at 120px 80px, #cfd8ff, transparent),
+        radial-gradient(1.5px 1.5px at 200px 160px, #ffffff, transparent),
+        radial-gradient(1px 1px at 60px 140px, #ffe9c4, transparent),
+        radial-gradient(ellipse at 15% 0%, rgba(90, 60, 210, 0.28), transparent 55%),
+        radial-gradient(ellipse at 95% 45%, rgba(20, 120, 210, 0.2), transparent 50%);
+    background-size: 240px 200px, 240px 200px, 240px 200px, 240px 200px, 100% 100%, 100% 100%;
+    background-attachment: fixed;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px 64px;
+}
+
+h1, h2 {
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin: 28px 0 12px;
+}
+
+/* ---------- Header ---------- */
+
+.hero {
+    display: flex;
+    align-items: flex-end;
+    min-height: 240px;
+    padding: 32px 16px 20px;
+    border-bottom: 1px solid var(--line);
+    background-color: #070a1c;
+    /* A warm glow, like the Sun just off the corner of the page. */
+    background-image: radial-gradient(circle at 80% 20%, rgba(255, 179, 71, 0.35), transparent 40%);
+}
+
+.hero-text {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    margin: 0 0 4px;
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+}
+
+.hero p {
+    margin: 0 0 16px;
+    color: var(--muted);
+}
+
+/* ---------- Buttons ---------- */
+
+button {
+    padding: 6px 16px;
+    border: 1px solid var(--cyan);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--cyan);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+button:hover {
+    background: rgba(111, 211, 255, 0.14);
+    box-shadow: 0 0 12px rgba(111, 211, 255, 0.35);
+}
+
+button.primary {
+    border-color: transparent;
+    background: linear-gradient(135deg, #ffd27a, var(--gold) 55%, #ff8a2a);
+    color: #1a1204;
+    font-weight: 600;
+}
+
+button.primary:hover {
+    background: linear-gradient(135deg, #ffd27a, var(--gold) 55%, #ff8a2a);
+    box-shadow: 0 0 16px rgba(255, 179, 71, 0.55);
+}
+
+button.danger {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+button.danger:hover {
+    background: rgba(255, 107, 107, 0.14);
+    box-shadow: 0 0 12px rgba(255, 107, 107, 0.35);
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* ---------- Forms ---------- */
+
+form {
+    max-width: 560px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+}
+
+form h2 {
+    margin-top: 0;
+}
+
+/* The HTML uses <br> for spacing; margins do that job now. */
+form br {
+    display: none;
+}
+
+form label {
+    display: block;
+    margin: 14px 0 4px;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+textarea {
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(4, 5, 13, 0.7);
+    color: var(--text);
+    font: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+form button {
+    margin: 12px 8px 0 0;
+}
+
+/* Type choices become pill-shaped toggles. */
+fieldset {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+legend {
+    padding: 0 6px;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+fieldset input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+fieldset label {
+    margin: 0;
+    padding: 4px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+fieldset input[type="radio"]:checked + label {
+    border-color: var(--gold);
+    background: rgba(255, 179, 71, 0.18);
+    color: var(--gold);
+}
+
+fieldset input[type="radio"]:focus-visible + label {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* Required-field markers */
+
+.required::after {
+    content: " *";
+    color: var(--gold);
+}
+
+.form-note {
+    margin: 0 0 4px;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+/* ---------- Status message ---------- */
+
+#message {
+    margin: 16px 0 0;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border-left: 4px solid var(--cyan);
+    background: var(--panel);
+}
+
+#message:empty {
+    display: none;
+}
+
+#message.success {
+    border-left-color: #5fd68a;
+}
+
+#message.error {
+    border-left-color: var(--danger);
+}
+
+/* ---------- Type cards ---------- */
+
+.type-card {
+    margin-bottom: 14px;
+    padding: 4px 16px;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 14px;
+    background: var(--panel);
+    transition: box-shadow 0.2s;
+}
+
+.type-card:hover,
+.type-card[open] {
+    box-shadow: 0 0 22px -6px var(--accent);
+}
+
+.type-card[data-type="star"]         { --accent: #ffb347; --orb: radial-gradient(circle at 35% 35%, #fff6c9, #ffb347 45%, #ff7a18); }
+.type-card[data-type="planet"]       { --accent: #5aa9ff; --orb: radial-gradient(circle at 35% 35%, #9fd0ff, #3b7dd8 55%, #14306b); }
+.type-card[data-type="dwarf planet"] { --accent: #d2a679; --orb: radial-gradient(circle at 35% 35%, #ecdcc6, #a8805c 55%, #5a4333); }
+.type-card[data-type="moon"]         { --accent: #c4c7d4; --orb: radial-gradient(circle at 35% 35%, #f4f4f8, #9a9db0 55%, #4c4f63); }
+.type-card[data-type="comet"]        { --accent: #7ff0ff; --orb: radial-gradient(circle at 70% 50%, #ffffff 0 20%, #7ff0ff 21% 34%, rgba(127, 240, 255, 0.25) 60%, transparent 75%); }
+.type-card[data-type="asteroid"]     { --accent: #b08968; --orb: radial-gradient(circle at 35% 35%, #cdb192, #7d6249 60%, #3b2c20); }
+
+.type-card summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    list-style: none;
+}
+
+.type-card summary::-webkit-details-marker {
+    display: none;
+}
+
+/* A little planet drawn in CSS, colored per type. */
+.type-card summary::before {
+    content: "";
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--orb);
+    box-shadow: 0 0 14px -2px var(--accent);
+}
+
+.type-card[data-type="asteroid"] summary::before {
+    border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
+}
+
+.type-card summary::after {
+    content: "+";
+    margin-left: auto;
+    color: var(--accent);
+    font-size: 1.4rem;
+}
+
+.type-card[open] summary::after {
+    content: "\2013";
+}
+
+.type-card ul {
+    margin: 0 0 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.type-card li {
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+}
+
+/* ---------- Rows inside a card ---------- */
+
+.body-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.body-row span {
+    flex: 1 1 180px;
+}
+
+.type-card img {
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 12px -2px var(--accent);
+}
+
+.body-detail {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 16px;
+    margin: 10px 0 0;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(4, 5, 13, 0.6);
+}
+
+.body-detail dt {
+    color: var(--muted);
+}
+
+.body-detail dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.body-edit form {
+    max-width: none;
+    margin-top: 10px;
+    background: rgba(4, 5, 13, 0.6);
+}
+
+@media (max-width: 520px) {
+    .body-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .body-detail dd {
+        margin-bottom: 6px;
+    }
+}
